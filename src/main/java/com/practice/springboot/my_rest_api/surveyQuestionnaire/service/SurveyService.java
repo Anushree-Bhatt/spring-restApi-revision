@@ -32,9 +32,40 @@ public class SurveyService {
     public Survey retrieveSurvey(Integer id) {
         Optional<Survey> res = surveys.stream().filter(survey -> survey.getId().equals(id)).findFirst();
 
-        if(res.isEmpty())
+        if(res.isEmpty()){
+            System.out.println("************** Survey id - "+id+" does not exist");
             return null;
+        }
 
         return res.get();
+    }
+
+    public List<Question> retrieveAllQuestions(Integer id) {
+        Survey s = retrieveSurvey(id);
+
+        if (s == null){
+            System.out.println("************** Survey id - "+id+" does not exist");
+            return null;
+        }
+
+        return s.getQuestions();
+    }
+
+
+    public Question retieveSurveyQuestion(Integer surveyId, Integer questionId) {
+        List<Question> questions = retrieveAllQuestions(surveyId);
+
+        if (questions == null){
+            return null;
+        }
+
+        Optional<Question> optionalQuestion = questions.stream().filter(question -> question.getId().equals(questionId)).findFirst();
+
+        if (optionalQuestion.isEmpty()){
+            System.out.println("******************* Question id does not exist");
+            return null;
+        }
+
+        return optionalQuestion.get();
     }
 }

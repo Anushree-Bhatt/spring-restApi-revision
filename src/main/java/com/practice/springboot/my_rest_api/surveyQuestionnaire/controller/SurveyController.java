@@ -1,10 +1,10 @@
 package com.practice.springboot.my_rest_api.surveyQuestionnaire.controller;
 
+import com.practice.springboot.my_rest_api.surveyQuestionnaire.pojo.Question;
 import com.practice.springboot.my_rest_api.surveyQuestionnaire.pojo.Survey;
 import com.practice.springboot.my_rest_api.surveyQuestionnaire.service.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +31,29 @@ public class SurveyController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey Not Found!");
 
         return survey;
+    }
+
+    @RequestMapping("/surveys/{id}/questions")
+    public List<Question> getAllQuestions(@PathVariable Integer id){
+        List<Question> questions = surveyService.retrieveAllQuestions(id);
+
+        if (questions == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Survey Not Found!");
+        }
+
+        return questions;
+    }
+
+    @RequestMapping("/surveys/{surveyId}/questions/{questionId}")
+    public  Question getQuestion(@PathVariable Integer surveyId, @PathVariable Integer questionId){
+        Question question = surveyService.retieveSurveyQuestion(surveyId, questionId);
+
+        if (question == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+        return question;
+
     }
 
 }
