@@ -1,4 +1,4 @@
-package com.practice.springboot.my_rest_api.pojo;
+package com.practice.springboot.my_rest_api.hello.pojo;
 
 public class Hello {
     private String message;

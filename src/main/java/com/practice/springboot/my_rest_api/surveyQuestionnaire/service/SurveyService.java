@@ -1,0 +1,24 @@
+package com.practice.springboot.my_rest_api.surveyQuestionnaire.service;
+
+import com.practice.springboot.my_rest_api.surveyQuestionnaire.pojo.Question;
+import com.practice.springboot.my_rest_api.surveyQuestionnaire.pojo.Survey;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class SurveyService {
+    private static List<Survey> surveys = new ArrayList<>();
+
+    static {
+        Question q1 = new Question(1, "Question 1", "Most popular cloud platform today", Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "AWS");
+        Question q2 = new Question(2, "Question 2", "Fastest growing Cloud platform", Arrays.asList("AWS", "Azure", "Google Cloud", "Oracle Cloud"), "Azure");
+        Question q3 = new Question(3, "Question 3", "Most popular devops tool", Arrays.asList("Docker", "Kubernates", "Terraform", "Azure Devops"), "Docker");
+
+        Survey s1 = new Survey(1, "Survey 1", "Survey on Cloud", Arrays.asList(q1, q2));
+        Survey s2 = new Survey(2, "Survey 2", "Survey on DevOps", Arrays.asList(q3));
+
+        surveys.add(s1);
+        surveys.add(s2);
+    }
+}

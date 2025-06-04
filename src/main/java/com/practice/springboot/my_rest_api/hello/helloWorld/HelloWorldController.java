@@ -1,10 +1,8 @@
-package com.practice.springboot.my_rest_api.helloWorld;
+package com.practice.springboot.my_rest_api.hello.helloWorld;
 
-import com.practice.springboot.my_rest_api.pojo.Hello;
-import org.springframework.stereotype.Controller;
+import com.practice.springboot.my_rest_api.hello.pojo.Hello;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 //@Controller
@@ -26,6 +24,7 @@ public class HelloWorldController {
     public String play_with_path_param(@PathVariable  String name, @PathVariable Integer id){
         return "Hi "+name+"! Continue learning with course no:"+id;
     }
+
 
 
 }
