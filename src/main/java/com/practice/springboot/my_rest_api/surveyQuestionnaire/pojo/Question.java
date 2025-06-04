@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Question {
     private Integer id;
-    private String title;
     private String description;
     private List<String> options;
     private String answer;
@@ -12,9 +11,8 @@ public class Question {
     public Question() {
     }
 
-    public Question(Integer id, String title, String description, List<String> options, String answer){
+    public Question(Integer id, String description, List<String> options, String answer){
         this.id = id;
-        this.title = title;
         this.description = description;
         this.options = options;
         this.answer = answer;
@@ -26,14 +24,6 @@ public class Question {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {
@@ -52,13 +42,21 @@ public class Question {
         this.options = options;
     }
 
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", options=" + options +
+                ", answer='" + answer + '\'' +
                 '}';
     }
 }
