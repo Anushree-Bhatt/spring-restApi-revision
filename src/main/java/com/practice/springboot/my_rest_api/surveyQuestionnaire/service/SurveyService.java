@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SurveyService {
@@ -24,7 +25,16 @@ public class SurveyService {
         surveys.add(s2);
     }
 
-    public List<Survey> getSurveys(){
+    public List<Survey> retrieveAllSurveys(){
         return  surveys;
+    }
+
+    public Survey retrieveSurvey(Integer id) {
+        Optional<Survey> res = surveys.stream().filter(survey -> survey.getId().equals(id)).findFirst();
+
+        if(res.isEmpty())
+            return null;
+
+        return res.get();
     }
 }
