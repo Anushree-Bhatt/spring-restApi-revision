@@ -1,15 +1,31 @@
 package com.practice.springboot.my_rest_api.helloWorld;
 
+import com.practice.springboot.my_rest_api.pojo.Hello;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-public class HelloWorldResource {
+//@Controller
+@RestController
+public class HelloWorldController {
 
     @RequestMapping("/hello")
-    @ResponseBody
+//    @ResponseBody
     public String hello_message(){
         return "Hello everyone! Welcome To Spring-boot World!";
     }
+
+    @RequestMapping("/hello-world")
+    public Hello hello_bean_message() {
+        return new Hello("Hey! Welcome welcome welcome.... To my Spring-Boot World!!");
+    }
+
+    @RequestMapping("/hello/{name}/todos/{id}")
+    public String play_with_path_param(@PathVariable  String name, @PathVariable Integer id){
+        return "Hi "+name+"! Continue learning with course no:"+id;
+    }
+
+
 }
