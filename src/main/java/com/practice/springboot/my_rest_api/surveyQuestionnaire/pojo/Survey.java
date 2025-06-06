@@ -45,8 +45,14 @@ public class Survey {
         return questions;
     }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+//    public void setQuestions(List<Question> questions) {
+//        this.questions = questions;
+//    }
+
+    public void addQuestion(Question question){
+        System.out.println("Adding question");
+        System.out.println(this.questions);
+        this.questions.add(question);
     }
 
     @Override
